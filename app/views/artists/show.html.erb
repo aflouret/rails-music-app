@@ -1,0 +1,8 @@
+<h1><%= @artist.name%></h1>
+
+
+<h2>Releases: </h2>
+<% @releases.releases.each do |release| %>
+   <div> <%= release.title %> <%= release.year %></div>
+<% end %>
+

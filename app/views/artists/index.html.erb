@@ -1,0 +1,7 @@
+<h1>HEHE </h1>
+<% @artists.releases.each do |release| %>
+    <% if release.type == "master"%>
+        <div><%=release.year%>  <%=release.title%> </div>
+    <% end %>
+<%end%>
+
