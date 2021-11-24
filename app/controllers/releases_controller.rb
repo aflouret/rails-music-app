@@ -2,7 +2,7 @@ class ReleasesController < ApplicationController
     require "discogs"
 
     before_action do
-        @discogs = Discogs::Wrapper.new("hehe", user_token: "SrWKXKdZFMqToajiBxyusQaZroBGcbNNiHIljyLk")
+        @discogs = Discogs::Wrapper.new("music-app", user_token: "SrWKXKdZFMqToajiBxyusQaZroBGcbNNiHIljyLk")
     end
 
     def show
