@@ -7,7 +7,8 @@ class SearchController < ApplicationController
     
     
     def index
-        @results_artists = @discogs.search(params[:query_artist]).results
-        @results_releases = @discogs.search(params[:query_release]).results
+        @results_artists = @discogs.search(params[:query_artist], type: "artist").results
+
+        @results_releases = @discogs.search(params[:query_release], type: "master", format: "album").results
     end
 end

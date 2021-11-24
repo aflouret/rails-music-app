@@ -21,19 +21,15 @@
 
 <% elsif params[:query_release].nil? && params[:query_artist] != nil %>
     <% @results_artists.each do |result| %>
-        <%if result.type == 'artist' %>
-            <div><%= link_to "%s" % [result.title], "/artists/%d" % result.id %></div>
-        <% end %>
+        <div><%= link_to "%s" % [result.title], "/artists/%d" % result.id %></div>
     <% end %> 
 
 <% elsif params[:query_artist].nil? && params[:query_release] != nil %>
     <% @results_releases.each do |result| %>
-        <%if result.type == 'release' %>
-            <div>
+        <div>
             <%= link_to "%s" % [result.title], "/releases/%d" % result.id %>
             <img src=<%=result.thumb%>>
-            </div>
-        <% end %>
+        </div>
     <% end %> 
 
 <% end %>

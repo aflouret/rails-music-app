@@ -7,6 +7,6 @@ class ReleasesController < ApplicationController
 
     def show
         id = params[:id]
-        @release = @discogs.get_release(id)
+        @release = @discogs.get_master(id)
     end
 end

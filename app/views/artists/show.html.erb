@@ -2,12 +2,11 @@
 
 
 <h2>Releases: </h2>
-<% @releases.releases.each do |release| %>
-   <% id = release.id %>
-   <% if release.type == "master" %>
-      <% id = release.main_release %>
-   <% end %>
-   <div><%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % id %></div>
+<% @releases.each do |release| %>
+   <div>
+      <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id %>
+      <img src=<%=release.thumb%>>
+   </div>
 
 <% end %>
 
