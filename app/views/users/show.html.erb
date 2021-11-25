@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong>
+  <h3>Username:</h3>
   <%= @user.username %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <h3>Reviews:</h3>
+  <% @user.reviews.each do |review| %>
+    <div>
+      <strong> <%= review.release.title %> </strong> <br>
+      <%= review.title %>
+      <%= review.body %>
+      <%= review.rating %>
+    </div>
+  <% end %>
+</p>
+
+<!--%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %-->

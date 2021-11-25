@@ -6,8 +6,13 @@
    <div> <%= track.title %> </div>
 <% end %>
 
+<h2>Add a review:</h2>
+<% if user_signed_in? %>
+   <%= render 'reviews/form' %>
+<% else %>
+   Log in to write a review!
+<% end %>
+
 <h2>Reviews</h2>
 <%= render @release_object.reviews %>
 
-<h2>Add a review:</h2>
-<%= render 'reviews/form' %>

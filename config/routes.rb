@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'artists#index'
+  root 'search#index'
 
-  resources :artists, :search, :users
+  devise_for :users
+  resources :users, only: [:show]
+  resources :artists, :search
   resources :releases do
     resources :reviews
   end

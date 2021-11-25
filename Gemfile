@@ -56,4 +56,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'discogs-wrapper'
-#gem 'musixmatch'
+gem 'devise'
