@@ -14,5 +14,5 @@
 <% end %>
 
 <h2>Reviews</h2>
-<%= render @release_object.reviews %>
+<%= render @release_object.reviews.select(&:persisted?) %>
 
