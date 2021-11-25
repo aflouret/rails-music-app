@@ -6,3 +6,8 @@
    <div> <%= track.title %> </div>
 <% end %>
 
+<h2>Reviews</h2>
+<%= render @release_object.reviews %>
+
+<h2>Add a review:</h2>
+<%= render 'reviews/form' %>

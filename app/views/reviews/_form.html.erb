@@ -1,0 +1,18 @@
+<%= form_with model: [ @release_object, @release_object.reviews.build ] do |form| %>
+    <p>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body %>
+    </p>
+    <p>
+        <%= form.label :rating %><br>
+        <%= form.number_field :rating %>
+    </p>
+    
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
