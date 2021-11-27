@@ -1,13 +1,19 @@
-<div id="title_search"><h1>SEARCH</h1></div>
+<div id="title_search">Find your favourite <strong>artists</strong> and <strong>albums</strong> </div>
 <style>
     #title_search{
         background-color: transparent;
-        
+        font-size:25px;
+        float:center;
         color: black;
+        font-weight:800px;
+        margin-bottom:1em;
+        
+        text-align:center;
+
     }
 </style>
 
-
+<div id="search_table">
 <%if params[:query_artist].nil? && params[:query_release].nil? %>
 
     <%= form_with url: "/search", method: 'get' do |form| %>
@@ -26,7 +32,6 @@
         <%= form.submit "Submit" %>
     <% end %>
 
-
 <% elsif params[:query_release].nil? && params[:query_artist] != nil %>
     <% @results_artists.each do |result| %>
         <div><%= link_to "%s" % [result.title], "/artists/%d" % result.id %></div>
@@ -36,8 +41,21 @@
     <% @results_releases.each do |result| %>
         <div>
             <%= link_to "%s" % [result.title], "/releases/%d" % result.id %>
-            <img src=<%=result.thumb%>>
+            <div><img src=<%=result.thumb%>></div>
         </div>
     <% end %> 
 
 <% end %>
+
+</div>
+
+
+<style>
+    #search_table{
+        font-size:15px;
+        float:center;
+        color: white;
+        text-align:center;
+
+    }
+</style>

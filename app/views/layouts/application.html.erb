@@ -9,23 +9,108 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <link rel="stylesheet" href="style.css">
   </head>
 
-  <body background="https://effectiviology.com/wp-content/uploads/The-Benefits-of-Music-and-Background-Noise.jpg">
+  <body background="https://cdn.wallpapersafari.com/62/70/vmSyDZ.jpg">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-   
+    <header>
+      <div class="wrapper">
+        <div class="logo">MusicApp</div>
+        <nav> <a href="#">Search</a>
+              <a href="#">Profile</a>
+              <a href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
 
+
+
+    <div id= "user_things">
     <% if user_signed_in? %>
-      <%= link_to current_user.username, edit_user_registration_path %>
+      <%= link_to current_user.username, edit_user_registration_path%>
       <%= link_to 'Log out', destroy_user_session_path, :method => :delete%>
     <% else %>
-      <%= link_to 'Log in', new_user_session_path, {:style=>"color: yellow;background:black;font-size:22px;font-weight:700;"} %>
-      <%= link_to 'Sign up', new_user_registration_path, {:style=>"color: yellow;background:black;font-size:22px;font-weight:700;"} %>
+      <%= link_to 'Log in', new_user_session_path %>
+      <%= link_to 'Sign up', new_user_registration_path %>
     <% end %>
     <%= yield %>
+    </div>
+    
+
+    <style>
+
+        *{margin:0;padding:0;}
+
+        
+        header{
+          margin:0;
+          padding:0;
+          width:100%;
+          overflow:hidden;
+          background:black;
+          margin-bottom:20px;
+          
+        }
+        .slogan{
+          color:white;
+          font-size:100px;
+          text-align:center;
+        }
+        .wrapper {
+          width:90%;
+          max-width:1500px;
+          margin:auto;
+          overflow:hidden;
+        }
+
+        header .logo{
+          color:white;
+          font-size:50px;
+          line-height:200px;
+          float:left;
+          font-weight:800px;
+        }
+
+        header nav{
+          float:right;
+          line-height:200px;
+        }
+
+        header nav a{
+          display:inline-block;
+          color:white;
+          text-decoration:none;
+          padding;10px 20px;
+          line-height:normal;
+          font-size:20px;
+          font-weight:bold;
+          -webkit-transition:all 500ms ease;
+          -o-transition:all 500ms ease;
+          transition:all 500ms ease;
+        }
+
+        header nav a:hover{
+          background:#f56f3a;
+          border-radius:50px;
+        }
+
+        #user_things{
+          
+          font-size:20px;
+          float:center;
+          color:red;
+          text-align:right;
+        }
+
+        
+
+
+        
+    </style>
   </body>
+
 </html>
 
 

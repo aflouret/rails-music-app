@@ -1,12 +1,52 @@
-<h1><%= @artist.name%></h1>
+<div id="artist"> <h1><%= @artist.name%></h1></div>
 
 
-<h2>Releases: </h2>
+<div id="releases"><h2>Releases: </h2></div>
+<div id="release_list">
 <% @releases.each do |release| %>
    <div>
       <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id %>
-      <img src=<%=release.thumb%>>
+      <div id="images_releases"><img src=<%=release.thumb%>></div>
    </div>
 
-<% end %>
 
+<% end %>
+</div>
+
+<style>
+   #artist{
+        background-color: transparent;
+        font-size:25px;
+        float:center;
+        color:black;
+        margin-bottom:1em;
+        
+        text-align:center;
+
+   }
+
+   #releases{
+        background-color: transparent;
+        font-size:18px;
+        float:center;
+        color:black;
+        margin-bottom:1em;
+        
+        text-align:center;
+
+   }
+   
+   #release_list{
+        background-color: transparent;
+        font-size:14px;
+        color: black;
+        margin-bottom:1em;
+        text-align:center;
+        float:center;
+        font-weight:bold;
+        line-height:50px;
+
+
+    }
+    
+</style>

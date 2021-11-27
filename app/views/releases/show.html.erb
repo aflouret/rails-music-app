@@ -1,18 +1,90 @@
-<h1><%= @release.title%></h1>
+<div id="release_titles"><h1><%= @release.title%></h1></div>
 
 
-<h2>Tracklist: </h2>
+<div id="tracklist"><h2>Tracklist: </h2></div>
 <% @release.tracklist.each do |track| %>
-   <div> <%= track.title %> </div>
+   <div id=tracks> <%= track.title %> </div>
 <% end %>
 
-<h2>Add a review:</h2>
+<div id="review_table">
+<div id="add_review"><h2>Add a review:</h2></div>
 <% if user_signed_in? %>
    <%= render 'reviews/form' %>
 <% else %>
    Log in to write a review!
 <% end %>
 
-<h2>Reviews</h2>
-<%= render @release_object.reviews.select(&:persisted?) %>
+<div id="reviews_releases_title"><h2>Reviews</h2></div>
+<div id="reviews_releases"><%= render @release_object.reviews.select(&:persisted?) %></div>
+</div>
+<style>
+   #release_titles{
+        background-color: transparent;
+        font-size:25px;
+        float:center;
+        color:black;
+        margin-bottom:1em;
+        
+        text-align:center;
 
+   }
+
+   #tracklist{
+        background-color: transparent;
+        font-size:18px;
+        float:center;
+        color:black;
+        margin-bottom:1em;
+        
+        text-align:center;
+
+   }
+   
+
+   #reviews_releases_title{
+      
+        font-size:20px;
+        float:center;
+        margin-top:15px;
+        margin-bottom:1em;
+        
+   }
+
+   #reviews_releases{
+      font-size:16px;
+      float:center;
+      margin-top:10px;
+      margin-bottom:1em;
+   
+   }
+   #tracks{
+        background-color: transparent;
+        font-size:25px;
+        float:center;
+        color: black;
+        margin-bottom:1em;
+        
+        text-align:center;
+
+    }
+   #review_table{
+      background-color: brown;
+      text-align:left;
+      overflow:hidden;
+      margin:0;
+      padding:0;
+      width:100%;
+      color:white;
+      margin-bottom:1em;
+   }
+   #add_review{
+      margin-top:10px;
+      font-size:20px;
+      float:center;
+      background-color: brown;
+      margin-bottom:10px;
+
+
+   }
+    
+</style>
