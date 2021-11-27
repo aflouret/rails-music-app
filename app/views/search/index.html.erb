@@ -2,30 +2,32 @@
 <style>
     #title_search{
         background-color: transparent;
-        font-size:25px;
+        font-size:60px;
         float:center;
         color: black;
-        font-weight:800px;
-        margin-bottom:1em;
-        
         text-align:center;
+        font-family: 'Helvetica Neue';
 
+        letter-spacing: -1px; 
+        line-height: 1;
     }
+
+
 </style>
 
 <div id="search_table">
 <%if params[:query_artist].nil? && params[:query_release].nil? %>
 
     <%= form_with url: "/search", method: 'get' do |form| %>
-        <%= form.label :query_artist,"Search for an artist:"%>
+        <div class=search_artist><%= form.label :query_artist,"Search for an artist:"%></div>
 
         <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
 
-        <div class=submit><%= form.submit "Submit" %></div>
+        <%= form.submit "Submit" %>
     <% end %>
 
     <%= form_with url: "/search", method: 'get' do |form| %>
-        <%= form.label :query_release, "Search for a release:" %>
+        <div class=search_release><%= form.label :query_release, "Search for a release:" %></div>
 
         <%= form.text_field :query_release, :placeholder => "Nevermind" %>
 
@@ -59,6 +61,29 @@
 
     }
 
+    .search_artist{
+        font-size:20px;
+        height: 30px;
+        color:black;
+        font-weight:bold;
+        border: 2px white;
+        text-align:center;
+        margin-top:60px;
+
+    }
+
+    .search_release{
+
+        font-size:20px;
+        height: 30px;
+        color:black;
+        font-weight:bold;
+        border: 2px white;
+        text-align:center;
+        margin-top:60px;
+
+    }
+
     input[type=text] {
         width:100%;
         padding:12px 20px;
@@ -74,6 +99,7 @@
     }
     
     input[type=button],input[type=submit],input[type=reset]{
+        height:50px;
         background-color:green;
         border:none;
         color:white;
