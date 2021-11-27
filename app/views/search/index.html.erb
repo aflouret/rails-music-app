@@ -21,7 +21,7 @@
 
         <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
 
-        <%= form.submit "Submit" %>
+        <div class=submit><%= form.submit "Submit" %></div>
     <% end %>
 
     <%= form_with url: "/search", method: 'get' do |form| %>
@@ -57,5 +57,37 @@
         color: white;
         text-align:center;
 
+    }
+
+    input[type=text] {
+        width:100%;
+        padding:12px 20px;
+        margin: 8px 0;
+        box-sizing:border-box;
+        border:2px solid black;
+        border-radius:4px;
+        background-color: white;
+        color:black;
+        background-image: "data:image/png;base64,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";
+        background-repeat:no-repeat;
+        padding-left:40px;
+    }
+    
+    input[type=button],input[type=submit],input[type=reset]{
+        background-color:green;
+        border:none;
+        color:white;
+        padding;16px 32px;
+        text-decoration:none;
+        margin:4px 2px;
+        cursor:pointer;
+        text-align:center;
+        display:inline-block;
+        font-size:16px;
+        border-radius:12px;
+        border:2px solid black;
+        width:25%;
+        margin-top:15px;
+        margin-bottom:30px;
     }
 </style>
