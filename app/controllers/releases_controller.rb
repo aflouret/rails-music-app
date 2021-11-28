@@ -8,19 +8,9 @@ class ReleasesController < ApplicationController
     def index               
         releases = Release.all
 
-        @releases = releases.sort_by{|release| average_rating(release)}
-            
+        @releases = releases.sort_by{|release| release.average_rating}.reverse!
     end
-
-    def average_rating(release)
-        
-        rating_sum = release.reviews.reduce do |sum, review|
-            sum + review.rating
-        end
-        rating_sum / release.reviews.length
-    end
-
-
+    
     def show
         id = params[:id]
         @release = @discogs.get_master(id)
