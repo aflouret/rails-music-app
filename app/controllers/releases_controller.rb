@@ -5,9 +5,22 @@ class ReleasesController < ApplicationController
         @discogs = Discogs::Wrapper.new("music-app", user_token: "SrWKXKdZFMqToajiBxyusQaZroBGcbNNiHIljyLk")
     end
 
-    def index
-        @releases = Release.all
+    def index               
+        releases = Release.all
+
+        @releases = releases.sort_by{|release| average_rating(release)}
+            
     end
+
+    def average_rating(release)
+        
+        rating_sum = release.reviews.reduce do |sum, review|
+            sum + review.rating
+        end
+        rating_sum / release.reviews.length
+    end
+
+
     def show
         id = params[:id]
         @release = @discogs.get_master(id)
