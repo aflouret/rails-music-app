@@ -1,15 +1,15 @@
 <div id="release_cover">
- <img src=<%=@release.images[0].resource_url%>>
+ <img src=<%=@release_data.images[0].resource_url%>>
 </div>
 
-<div id="release_titles"><h1><%= @release.title%></h1></div>
+<div id="release_titles"><h1><%= @release_data.title%></h1></div>
 
 <div id="artist_name">
-<%= link_to @release.artists[0].name, "/artists/%d" % @release.artists[0].id %>
+<%= link_to @release_data.artists[0].name, "/artists/%d" % @release_data.artists[0].id %>
 </div>
 
 <div id="tracklist"><h2>Tracklist: </h2></div>
-<% @release.tracklist.each do |track| %>
+<% @release_data.tracklist.each do |track| %>
    <div id=tracks> <%= track.title %> <%= track.duration %> </div>
 <% end %>
 
@@ -22,11 +22,11 @@
 <% end %>
 
 <div id="reviews_releases_title"><h2>Reviews</h2></div>
-<div id="reviews_releases"><%= render @release_object.reviews.select(&:persisted?) %></div>
+<div id="reviews_releases"><%= render @release.reviews.select(&:persisted?) %></div>
 </div>
 
 <!--Agregar duracion total del release:
-<% @release.tracklist.each do |track| %>
+<% @release_data.tracklist.each do |track| %>
    <div id=tracks><% track.duration %> </div>
    <p>Release durantion</p>
 <% end %>-->
