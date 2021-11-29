@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h3>Username:</h3>
-  <%= @user.username %>
+  <div id="username"> <h3>Username:</h3>
+  <%= @user.username %></div>
 </p>
 
 <p>
-  <h3>Reviews:</h3>
+  <div id=reviews_username><h3>Reviews:</h3>
   <% @user.reviews.each do |review| %>
     <div>
       <strong> <%= review.release.title %> </strong> <br>
@@ -15,7 +15,17 @@
       <%= review.rating %>
     </div>
   <% end %>
+  </div>
 </p>
 
 <!--%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %-->
+
+<style>
+  #username{
+    color:white;
+  }
+
+  #reviews_username{
+    color:white;
+  }

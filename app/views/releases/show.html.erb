@@ -10,7 +10,7 @@
 
 <div id="tracklist"><h2>Tracklist: </h2></div>
 <% @release_data.tracklist.each do |track| %>
-   <div id=tracks> <%= track.title %> <%= track.duration %> </div>
+   <div id="tracks"><span id=track_name> <%= track.title %>  </span>  <span id=track_duration> <%= track.duration %> </span></div>
 <% end %>
 
 <div id="review_table">
@@ -25,11 +25,7 @@
 <div id="reviews_releases"><%= render @release.reviews.select(&:persisted?) %></div>
 </div>
 
-<!--Agregar duracion total del release:
-<% @release_data.tracklist.each do |track| %>
-   <div id=tracks><% track.duration %> </div>
-   <p>Release durantion</p>
-<% end %>-->
+
 
 
 <style>
@@ -47,7 +43,7 @@
         background-color: transparent;
         font-size:25px;
         float:center;
-        color:black;
+        color:white;
         margin-bottom:1em;
         
         text-align:left;
@@ -57,7 +53,7 @@
         background-color: transparent;
         font-size:20px;
         float:center;
-        color:black;
+        color:white;
         margin-bottom:1em;
         
         text-align:left;
@@ -68,7 +64,7 @@
         background-color: transparent;
         font-size:18px;
         float:center;
-        color:black;
+        color:white;
         margin-bottom:1em;
         
         text-align:left;
@@ -80,7 +76,7 @@
       
         font-size:20px;
         float:center;
-        margin-top:15px;
+        margin-top:70px;
         margin-bottom:1em;
         
    }
@@ -92,18 +88,31 @@
       margin-bottom:1em;
    
    }
-   #tracks{
-        background-color: transparent;
-        font-size:25px;
-        float:center;
-        color: black;
-        margin-bottom:1em;
-        
-        text-align:left;
 
+   #track{
+      margin-bottom:20px;
+   }
+   #track_name{
+      background-color: transparent;
+      font-size:18px;
+      float:center;
+      color: white;
+      margin-bottom:10px; 
+      text-align:left;
+   }
+
+   #track_duration{
+      background-color: transparent;
+      font-size:20px;
+      float:center;
+      color: grey;
+      margin-bottom:10px;
+      text-align:left;
+      display: inline;
+   
     }
    #review_table{
-      background-color: brown;
+      background-color: transparent;
       text-align:left;
       overflow:hidden;
       margin:0;
@@ -113,10 +122,10 @@
       margin-bottom:1em;
    }
    #add_review{
-      margin-top:10px;
+      margin-top:70px;
       font-size:20px;
       float:center;
-      background-color: brown;
+      background-color: transparent;
       margin-bottom:10px;
 
 
