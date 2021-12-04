@@ -1,33 +1,12 @@
 <p id="notice"><%= notice %></p>
-<div id="releases"><h1>Releases</h1></div>
-
-
-<table id="table_releases">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @releases.each do |release| %>
-      <tr>
-        <%= release.title%>
-        <%= release.average_rating%>    
-        <!--<td><%= link_to 'Show', release %></td>
-        <td><%= link_to 'Edit', edit_release_path(release) %></td>
-        <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-
-<br>
-
-<%= link_to 'New Release', new_release_path %>
+<br> <br> <br> <br> 
+<div id="releases"><h1>Top Releases</h1></div>
+<br> 
+<ul>
+  <% @releases.each do |release| %>    
+      <li><%= release.title%>    (<%= release.average_rating%>)</li>    
+  <% end %>
+</ul>
 
 
 
