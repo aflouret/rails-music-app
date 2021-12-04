@@ -12,16 +12,19 @@
     <link rel="stylesheet" href="style.css">
   </head>
 
-  <body 
-    background="https://wallpaperboat.com/wp-content/uploads/2019/10/best-background-for-website-01.jpg">
+  <body>
     
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <header>
-      <div id="img"> <% link_to image_tag("logos/logo.jpg"), root_path, :class => "style_image" %> </div>
+     
+
       <div class="wrapper">
-        <div class="logo"> <%= link_to "MusicOnRails", root_path,:class => "name" %> </div>  
-      </div>
+
+        
+        <div class="logo"><%=image_tag("logo.png", :class => "img_logo") %><span></span><%= link_to "MusicOnRails", root_path,:class=>"name" %> </div>
+      </div> 
+    
 
       <nav> 
         <% if user_signed_in? %>
@@ -43,13 +46,11 @@
 
         *{margin:0;padding:0;}
 
-        .style_image{
-          max-height: 150px;
-          max-width: 200px;
-          width: 120px;
-          height: 120px;
-          border: 1px solid red;
-        }
+        body { 
+          background-color: #FFFF33;
+          
+          
+          }
         
         .header{
           margin:0;
@@ -70,50 +71,87 @@
         }
 
         header .logo{
-          color:black;
+          color:#202020;
           font-family: "Great Vibes","Brush Script MT"; 
           font-style cursive; 
-          font-size:50px;
+          font-size:30px;
           line-height:40px;
           float:left;
           font-weight:normal;
           margin-bottom: 40px; 
           margin-top: 5px; 
           text-shadow: 0 1px 1px #fff;
+          height: 25px;
+          letter-spacing: 1px;
+          text-decoration:none;
+        }
+
+        .name:hover{
+          background:transparent;
+          border-radius:50px;
+          color:#202020;
+          z-index: 10;
+          position: relative;
+          display: inline-block;
+          padding: 8px 18px;
+          font-weight: 600;
+          transition: all 0.3s;
+          
+
+          
+        }
+        .img_logo{
+          width:150px;
+          vertical-align: middle;
+          border-style: none;
         }
 
         .name{
           text-decoration:none;
-          color:black;
+          color:#202020;
           font-family: "Great Vibes","Brush Script MT"; 
-          font-style cursive; 
+          font-weight: 600; 
           background-color:transparent;
+          cursor: pointer;
+          margin-left:0px;
+          
         }
+        .special-link, .special-link:visited, .special-link:hover, .special-link:active {
+          color: inherit;
+        
+        }
+
+        a, a:visited, a:hover, a:active {
+          color: inherit;
+          }
         header nav{
+          display:inline-block;
           text-decoration:none;
           float:right;
           line-height:20px;
+          vertical-align: middle;
         }
 
         header nav a{
-          display:inline-block;
-          color:white;
-          text-decoration:none;
-          padding;10px 20px;
-          line-height:normal;
-          font-size:20px;
-          font-weight:bold;
-          -webkit-transition:all 500ms ease;
-          -o-transition:all 500ms ease;
-          transition:all 500ms ease;
-          margin-left: 30px;
-          margin-right: 30px;
-          float:center;
+        z-index: 10;
+        position: relative;
+        display: inline-block;
+        padding: 8px 18px;
+        color: #ecf0f1;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        text-decoration:none;
+        font-size: 14px;
+        transition: all 0.3s;
+        vertical-align: middle;
         }
 
+
         header nav a:hover{
-          background:#f56f3a;
+          background:black;
           border-radius:50px;
+          color:#FFFF33;
         }
 
         #user_things{

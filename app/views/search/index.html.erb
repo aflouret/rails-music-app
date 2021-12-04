@@ -1,25 +1,11 @@
 <div id="title_search">Find your favourite <strong>artists</strong> and <strong>albums!</strong> </div>
-<style>
-    #title_search{
-        background-color: transparent;
-        font-size:40px;
-        float:center;
-        color: white;
-        text-align:center;
-        font-family: 'Helvetica Neue';
-        margin-top: 80px;
-        letter-spacing: -1px; 
-        line-height: 1;
-    }
-
-
-</style>
 
 <div id="search_table">
 <%if params[:query_artist].nil? && params[:query_release].nil? %>
 
     <%= form_with url: "/search", method: 'get' do |form| %>
-         <div id="img"> <% link_to image_tag("logos/lupa.jpg"), root_path, :class => "style_image" %> </div>
+         
+
         <div class=search_artist><%= form.label :query_artist,"Search for an artist:"%></div>
 
         <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
@@ -54,22 +40,35 @@
 
 
 <style>
+
+    #title_search{
+        background-color: transparent;
+        font-size:40px;
+        float:center;
+        color: black;
+        text-align:center;
+        font-family: 'Helvetica Neue';
+        margin-top: 80px;
+        letter-spacing: -1px; 
+        line-height: 1;
+    }
     #search_table{
         font-size:15px;
         float:center;
-        color: white;
-        text-align:center;
+        color: grey;
+        text-align:left;
 
     }
 
     .search_artist{
         font-size:15px;
         height: 30px;
-        color:white;
+        color:black;
         font-weight:bold;
         border: 2px white;
-        text-align:center;
+        text-align:left;
         margin-top:60px;
+        margin-left:50px;
 
     }
 
@@ -77,11 +76,12 @@
 
         font-size:15px;
         height: 30px;
-        color:white;
+        color:black;
         font-weight:bold;
         border: 2px white;
-        text-align:center;
-        margin-top:60px;
+        text-align:left;
+        margin-top:40px;
+        margin-left:50px;
 
     }
 
@@ -101,9 +101,9 @@
     
     input[type=button],input[type=submit],input[type=reset]{
         height:25px;
-        background-color:grey;
+        background-color:black;
         border:none;
-        color:white;
+        color:#FFFF33;
         padding;16px 32px;
         text-decoration:none;
         margin:4px 2px;
@@ -115,5 +115,7 @@
         width:5%;
         margin-top:10px;
         margin-bottom:30px;
+        margin-left:90px;
     }
+
 </style>
