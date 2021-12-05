@@ -1,16 +1,13 @@
 <div id="artist"> <h1><%= @artist.name%></h1></div>
-
-
 <div id="releases"><h2>Releases: </h2></div>
+<div class="flex-container">
 <div id="release_list">
-<% @releases.each do |release| %>
-   <div>
-      <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id %>
-      <div id="images_releases"><img src=<%=release.thumb%>></div>
-   </div>
-
-
-<% end %>
+   <% @releases.each do |release| %>
+      <div>
+         <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id %>
+         <div id="images_releases"><img src=<%=release.thumb%>></div>
+      </div>
+   <% end %>
 </div>
 
 <style>

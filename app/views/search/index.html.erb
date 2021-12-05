@@ -2,24 +2,26 @@
 
 <div id="search_table">
 <%if params[:query_artist].nil? && params[:query_release].nil? %>
+    <span>
+        <%= form_with url: "/search", method: 'get' do |form| %>
+            
+            
+            <div class=search_artist><%= form.label :query_artist,"Search for an artist:"%></div>
 
-    <%= form_with url: "/search", method: 'get' do |form| %>
-         
+            <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
 
-        <div class=search_artist><%= form.label :query_artist,"Search for an artist:"%></div>
+            <div><%= form.submit "Submit" %></div>
+        <% end %>
+    </span>
+    <span>
+        <%= form_with url: "/search", method: 'get' do |form| %>
+            <div class=search_release><%= form.label :query_release, "Search for a release:" %></div>
 
-        <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
+            <%= form.text_field :query_release, :placeholder => "Nevermind" %>
 
-        <div><%= form.submit "Submit" %></div>
-    <% end %>
-
-    <%= form_with url: "/search", method: 'get' do |form| %>
-        <div class=search_release><%= form.label :query_release, "Search for a release:" %></div>
-
-        <%= form.text_field :query_release, :placeholder => "Nevermind" %>
-
-         <div><%= form.submit "Submit" %></div>
-    <% end %>
+            <div><%= form.submit "Submit" %></div>
+        <% end %>
+    </span>
 
 <% elsif params[:query_release].nil? && params[:query_artist] != nil %>
     <% @results_artists.each do |result| %>
@@ -56,7 +58,7 @@
         font-size:15px;
         float:center;
         color: grey;
-        text-align:left;
+        text-align:center;
 
     }
 
@@ -66,9 +68,9 @@
         color:black;
         font-weight:bold;
         border: 2px white;
-        text-align:left;
+        text-align:center;
         margin-top:60px;
-        margin-left:50px;
+      
 
     }
 
@@ -79,9 +81,9 @@
         color:black;
         font-weight:bold;
         border: 2px white;
-        text-align:left;
+        text-align:center;
         margin-top:40px;
-        margin-left:50px;
+   
 
     }
 
@@ -115,7 +117,7 @@
         width:5%;
         margin-top:10px;
         margin-bottom:30px;
-        margin-left:90px;
+   
     }
 
 </style>
