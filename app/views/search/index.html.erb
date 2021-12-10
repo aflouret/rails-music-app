@@ -6,7 +6,9 @@
         <%= form_with url: "/search", method: 'get' do |form| %>
             
             
-            <div class=search_artist><%= form.label :query_artist,"Search for an artist:"%></div>
+            <div class=search_artist>
+            <%= form.label :query_artist,"Search for an artist:"%>
+            </div>
 
             <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
 
@@ -43,6 +45,8 @@
 
 <style>
 
+    
+
     #title_search{
         background-color: transparent;
         font-size:40px;
@@ -55,10 +59,11 @@
         line-height: 1;
     }
     #search_table{
+        
         font-size:15px;
         float:center;
-        color: grey;
-        text-align:center;
+        color: black;
+        text-align:center;       
 
     }
 
@@ -69,8 +74,7 @@
         font-weight:bold;
         border: 2px white;
         text-align:center;
-        margin-top:60px;
-      
+        margin-top:60px;            
 
     }
 
