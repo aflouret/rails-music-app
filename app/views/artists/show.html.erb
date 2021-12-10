@@ -4,7 +4,7 @@
 <div id="release_list">
    <% @releases.each do |release| %>
       <div>
-         <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id %>
+         <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id, :class=>"releases_links"%>
          <div id="images_releases"><img src=<%=release.thumb%>></div>
       </div>
    <% end %>
@@ -35,14 +35,29 @@
    }
    
    #release_list{
-        background-color: transparent;
-        font-size:14px;
-        color: black;
-        margin-bottom:1em;
-        text-align:center;
-        float:center;
-        font-weight:bold;
-        line-height:50px;
+      
+      margin-left: 5cm;
+      display: inline-grid;
+      grid-template-columns: 20em 20em 20em;
+      background-color: transparent;
+      font-size:14px;
+      color: black;
+      margin-bottom:1em;
+      text-align:center;
+      float:center;
+      font-weight:bold;
+      line-height:50px;
     }
+
+   .releases_links:hover{
+      background-color:white;
+   }
+
+   .releases_links{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;      
+   }
+
     
-</style>
+</style> 

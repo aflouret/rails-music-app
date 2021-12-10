@@ -26,8 +26,8 @@
     </span>
 
 <% elsif params[:query_release].nil? && params[:query_artist] != nil %>
-    <% @results_artists.each do |result| %>
-        <div><%= link_to "%s" % [result.title], "/artists/%d" % result.id %></div>
+    <% @results_artists[0,5].each do |result| %>
+        <div><%= link_to "%s" % [result.title], "/artists/%d" % result.id, :class=>"artist_link" %></div>
     <% end %> 
 
 <% elsif params[:query_artist].nil? && params[:query_release] != nil %>
@@ -46,7 +46,6 @@
 <style>
 
     
-
     #title_search{
         background-color: transparent;
         font-size:40px;
@@ -58,24 +57,30 @@
         letter-spacing: -1px; 
         line-height: 1;
     }
+
     #search_table{
         
-        font-size:15px;
+        line-height: 2.5;
+        font-size:30px;
+        font:'Alegreya';
         float:center;
         color: black;
-        text-align:center;       
+        text-align:center;  
+    }   
 
-    }
+    .search_artist{   
 
-    .search_artist{
         font-size:15px;
         height: 30px;
         color:black;
         font-weight:bold;
         border: 2px white;
         text-align:center;
-        margin-top:60px;            
-
+        margin-top:60px;
+    } 
+   
+    .artist_link:hover {
+        background: white;
     }
 
     .search_release{
@@ -86,8 +91,7 @@
         font-weight:bold;
         border: 2px white;
         text-align:center;
-        margin-top:40px;
-   
+        margin-top:40px;  
 
     }
 

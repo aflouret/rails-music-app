@@ -6,11 +6,6 @@ class ArtistsController < ApplicationController
     end
 
 
-    # def index
-    #     @artists = @discogs.get_artist_releases("260935", :per_page => 200, :type => "release")
-
-    # end
-
     def show
         id = params[:id]
         @artist = @discogs.get_artist(id)

@@ -19,7 +19,7 @@
     <%= review.rating %>
 </p>
 
-<%if current_user.id == review.user_id%>
+<%if !current_user.nil? && current_user.id == review.user_id%>
     <p>
         <%= link_to "Edit", edit_release_review_path(review.release, review) %>
     </p>
