@@ -2,12 +2,19 @@
 <br> <br> <br> <br> 
 <div id="releases"><h1>Top Releases</h1></div>
 <br> 
-<ul>
-  <% @releases.each do |release| %>    
-      <li><%= release.title%>    (<%= release.average_rating%>)</li>    
+<ol>
+  <% @releases.each do |release| %>
+    <li><b><%= release.title%></b>    (<%= release.average_rating%>) <br> <img class="cover" src=<%=@covers[release.id]%>> </li>
+
+        
   <% end %>
-</ul>
+</ol>
 
 
 
+<style>
+.cover {
+  width: 100px;
+}
+</style>
 
