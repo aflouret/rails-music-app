@@ -1,24 +1,21 @@
-# README
+# MusicOnRails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Migrate the database
 
-Things you may want to cover:
+```
+rails db:migrate
+```
 
-* Ruby version
+2. Install Webpacker
 
-* System dependencies
+```
+rails webpacker:install
+```
 
-* Configuration
+3. Start the Rails server
 
-* Database creation
+```
+rails s
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+And now you can visit the site with the URL http://localhost:3000
