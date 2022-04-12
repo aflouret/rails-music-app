@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
-<br> <br> <br> <br> 
-<div id="releases"><h1>Top Releases</h1></div>
-<br> 
-<ol>
-  <% @releases.each do |release| %>
-    <li><b><%= release.title%></b>    (<%= release.average_rating%>) <br> <img class="cover" src=<%=@covers[release.id]%>> </li>
-
-        
-  <% end %>
-</ol>
+<%= stylesheet_link_tag "releases_index" %>
 
 
+<div class="top-10">
+  <h1>Top 10 Releases</h1>
+    <ol>
+    <% @releases[0, 10].each do |release| %>
+      <%= link_to "/releases/%d" % release.id do %>
 
-<style>
-.cover {
-  width: 100px;
-}
-</style>
+      <li>
+        <div><img class="cover" src=<%=@covers[release.id]%>></div>
+        <div>
+          <div><b><%= release.title%></b></div>
+          <div class="artist-year"><%= "%s - %s" % [release.artist, release.year]%></div>
+
+
+          <div class="rating"><b><%= release.average_rating%></b>/10</div>
+        </div>
+      </li>
+      <%end%>
+    <% end %>
+    </ol>
+</div>
+
 

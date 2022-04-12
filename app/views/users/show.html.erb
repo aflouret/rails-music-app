@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <div id="username"> <h3>Username:</h3>
-  <%= @user.username %></div>
-</p>
-
-<p>
-  <div id=reviews_username><h3>Reviews:</h3>
+<div>
+  <div class=user-reviews><h2>Reviews by <%= @user.username %>:</h3>
   <% @user.reviews.each do |review| %>
-    <div>
-      <strong> <%= review.release.title %> </strong> <br>
-      <%= review.title %>
-      <%= review.body %>
-      <%= review.rating %>
+    
+    <%= link_to "/releases/%d" % review.release.id do %>
+    <div class="review"> 
+
+      <div class="album-title"><b> <%= review.release.title %> </b></div>
+     
+      <div class="rating">
+          <b> <%= review.rating %></b>/10
+      </div>
+
+      <div class="title">
+          <%= review.title %>
+      </div>
+      
+      <div class="body">
+          <%= review.body %>
+      </div>
     </div>
+    <%end%>
   <% end %>
   </div>
-</p>
+</div>
+
 
 <!--%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %-->
-
-<style>
-  #username{
-    color:white;
-  }
-
-  #reviews_username{
-    color:white;
-  }
-
-  
-</style>

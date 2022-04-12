@@ -1,32 +1,32 @@
-<h3>Review:</h3>
-<p>
-    <strong>Username:</strong>
-    <%= review.user.username %>
-</p>
+<div class="review">
 
-<p>
-    <strong>Title:</strong>
-    <%= review.title %>
-</p>
+    <div class="user">
+        User:   
+        <b><%= review.user.username %></b>
+    </div>
+    
+    <div class="rating">
+        <b> <%= review.rating %></b>/10
+    </div>
 
-<p>
-    <strong>Review:</strong>
-    <%= review.body %>
-</p>
-
-<p>
-    <strong>Rating:</strong>
-    <%= review.rating %>
-</p>
-
-<%if !current_user.nil? && current_user.id == review.user_id%>
-    <p>
-        <%= link_to "Edit", edit_release_review_path(review.release, review) %>
-    </p>
-    <p>
-        <%= link_to 'Delete', [review.release, review], method: :delete, data: { confirm: "Are you sure you want to delete your review?" } %>
-    </p>
-<% end %>
-
+    <div class="title">
+        <%= review.title %>
+    </div>
+    
+    <div class="body">
+        <%= review.body %>
+    </div>
+    
+    <%if !current_user.nil? && current_user.id == review.user_id%>
+    <div class="edit-delete">
+        <p class="edit">
+            <%= link_to "Edit", edit_release_review_path(review.release, review) %>
+        </p>
+        <p class="delete">
+            <%= link_to 'Delete', [review.release, review], method: :delete, data: { confirm: "Are you sure you want to delete your review?" } %>
+        </p>
+    </div>
+    <% end %>
+</div>
 
 

@@ -9,163 +9,40 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <header>
-     
+        <%= link_to root_path,:class=>"name" do%>
+        <div class="logo">  
+          <%= image_tag "musiconrails"%>
 
-      <div class="wrapper">
+          <div>musicOnRails</div>
+        </div> 
 
-        
-      <div class="logo"><%=image_tag("logo.png", :class => "img_logo") %><span></span><%= link_to "MusicOnRails", root_path,:class=>"name" %> </div>
-      </div> 
-    
-
-      <nav> 
+        <%end%>
+      <ul class="links"> 
         <% if user_signed_in? %>
-          <%= link_to "Profile" , "/users/%d" % current_user.id %>
-          <%= link_to 'Log out', destroy_user_session_path, :method => :delete%>
+          <li><%= link_to "Profile" , "/users/%d" % current_user.id %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete%></li>
         <% else %>
-          <%= link_to 'Log in', new_user_session_path %>
-          <%= link_to 'Sign up', new_user_registration_path %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
         <% end %>   
-          <%= link_to 'Source Code', "https://github.com/aflouret/rails-music-app" %>  
-          <%= link_to 'Top 10', "/releases" %>       
-      </nav>
-
-      
+          <li><%= link_to 'Top 10', "/releases" %>       </li>
+      </ul>
     </header>
+    
+    <%= link_to "https://github.com/aflouret/rails-music-app" do%>
+    <div class="source-code-container">
+      <%= image_tag "githublogo"%>
+      <div> Source Code </div>
+    </div>
+    <%end%>
+
     <%= yield %>    
-
-    <style>
-
-        *{margin:0;padding:0;}
-
-        body { 
-          background-color:#f5f786;         
-          
-        }
-        
-        .header{
-          margin:0;
-          padding:0;
-          width:1000%;
-          overflow:hidden;
-          background:transparent;
-          margin-bottom:20px;
-          
-        }
-
-
-        .wrapper {
-          width:90%;
-          max-width:1500px;
-          margin:auto;
-          overflow:hidden;
-        }
-
-        header .logo{
-          color:#202020;
-          font-family: "Great Vibes","Brush Script MT"; 
-          font-style cursive; 
-          font-size:30px;
-          line-height:40px;
-          float:left;
-          font-weight:normal;
-          margin-bottom: 40px; 
-          margin-top: 5px; 
-          text-shadow: 0 1px 1px #fff;
-          height: 25px;
-          letter-spacing: 1px;
-          text-decoration:none;
-        }
-
-        .name:hover{
-          background:transparent;
-          border-radius:50px;
-          color:#202020;
-          z-index: 10;
-          position: relative;
-          display: inline-block;
-          padding: 8px 18px;
-          font-weight: 600;
-          transition: all 0.3s;
-          
-
-          
-        }
-        .img_logo{
-          width:150px;
-          vertical-align: middle;
-          border-style: none;
-        }
-
-        .name{
-          text-decoration:none;
-          color:#202020;
-          font-family: "Great Vibes","Brush Script MT"; 
-          font-weight: 600; 
-          background-color:transparent;
-          cursor: pointer;
-          margin-left:0px;
-          
-        }
-        .special-link, .special-link:visited, .special-link:hover, .special-link:active {
-          color: inherit;
-        
-        }
-
-        a, a:visited, a:hover, a:active {
-          color: inherit;
-          }
-        header nav{
-          display:inline-block;
-          text-decoration:none;
-          float:right;
-          line-height:20px;
-          vertical-align: middle;
-        }
-
-        header nav a{
-        z-index: 10;
-        position: relative;
-        display: inline-block;
-        padding: 8px 18px;
-        color: #ecf0f1;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 600;
-        text-decoration:none;
-        font-size: 14px;
-        transition: all 0.3s;
-        vertical-align: middle;
-        }
-
-
-        header nav a:hover{
-          background:black;
-          border-radius:50px;
-          color:#FFFF33;
-        }
-
-        #user_things{
-          
-          font-size:20px;
-          float:center;
-          color:red;
-          text-align:right;
-        }
-
-        
-
-
-        
-    </style>
   </body>
 
 </html>

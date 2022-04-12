@@ -1,0 +1,32 @@
+.top-10 {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.top-10 h1 {
+  margin: 20px;
+}
+
+.top-10 li {
+  border-bottom: solid 1px rgb(236, 236, 236);
+  padding: 20px 30px;
+  background-color: white;
+  flex: 1;
+  font-size: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.top-10 li img {
+  width: 100px;
+}
+
+.top-10 li .artist-year {
+  margin-top: 5px;
+  margin-bottom: 23px;
+}
+
+.top-10 li .rating b {
+  font-size: 28px;
+}

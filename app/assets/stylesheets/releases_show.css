@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.album-container {
+  background-color: white;
+  display: flex;
+  gap: 50px;
+  margin: 30px;
+  padding: 30px;
+  border-radius: 3px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.artist-name {
+  font-size: 23px;
+}
+
+.image-container {
+  margin-top: 30px;
+}
+
+.image-container img {
+  width: 350px;
+  max-width: 100%;
+}
+
+table {
+  margin-top: 90px;
+}
+
+caption {
+  font-size: 21px;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+th, td {
+  padding-right: 30px;
+  padding-bottom: 2px;
+  text-align: left;
+}
+
+th {
+  padding-bottom: 3px;
+}
+
+.review-form-container {
+  width: 100%;
+  padding-left: 40px;
+  margin-top: 10px;
+}
+
+.review-form-container form {
+  margin-top: 10px;
+}
+
+.review-form-container input[type="submit"] {
+  padding: 5px 10px;
+  background-color: rgb(202, 90, 90);
+  color: white;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+.review-form-container input,
+.review-form-container textarea {
+  border: 0px;
+  border-radius: 3px;
+  padding: 0.2em;
+  margin: 0.5em 0;
+}
+
+.review-form-container textarea {
+  width: 500px;
+  height: 100px;
+  font-family: Helvetica;
+}
+
+.review-form-container label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.reviews-container {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.reviews-container h2 {
+  padding: 10px 20px;
+}
+
+.review {
+  border-bottom: solid 1px rgb(236, 236, 236);
+  padding: 20px;
+  background-color: white;
+}
+
+.review .rating {
+  margin: 5px 0px;
+}
+
+.review .rating b {
+  font-size: 28px;
+}
+
+.review .title {
+  font-weight: bold;
+  width: min(700px, 90%);
+}
+
+.review .body {
+  width: min(700px, 90%);
+}
+
+.review .edit-delete {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.7em;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.review .edit-delete .delete {
+  color:rgb(202, 90, 90)
+}
+

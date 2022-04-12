@@ -1,63 +1,18 @@
-<div id="artist"> <h1><%= @artist.name%></h1></div>
-<div id="releases"><h2>Releases: </h2></div>
-<div class="flex-container">
-<div id="release_list">
+<%= stylesheet_link_tag "artists_show" %>
+
+<h1 class="artist-releases">Releases by <%= @artist.name%></h1>
+<div class="release-grid">
    <% @releases.each do |release| %>
-      <div>
-         <%= link_to "%s %s" % [release.title, release.year], "/releases/%d" % release.id, :class=>"releases_links"%>
-         <div id="images_releases"><img src=<%=release.thumb%>></div>
+      
+      <div class="release-card">
+
+      <%= link_to "/releases/%d" % release.id do %>
+            <div class="release-card-flex">
+               <div class="album"><%=release.title%></div>
+               <div><img src=<%=release.thumb%>></div>
+               <div class="year"><%=release.year%></div>
+            </div>
+      <%end%>
       </div>
    <% end %>
 </div>
-
-<style>
-   #artist{
-        background-color: transparent;
-        font-size:20px;
-        float:center;
-        color:black;
-        margin-top:1.5cm;
-        margin-bottom:1em;
-        text-decoration: underline;
-        text-align:left;
-
-   }
-
-   #releases{
-        background-color: transparent;
-        font-size:16px;
-        float:center;
-        color:black;
-        margin-bottom:30px;
-        margin-top:50px;
-        text-align:center;
-
-   }
-   
-   #release_list{
-      
-      margin-left: 5cm;
-      display: inline-grid;
-      grid-template-columns: 20em 20em 20em;
-      background-color: transparent;
-      font-size:14px;
-      color: black;
-      margin-bottom:1em;
-      text-align:center;
-      float:center;
-      font-weight:bold;
-      line-height:50px;
-    }
-
-   .releases_links:hover{
-      background-color:white;
-   }
-
-   .releases_links{
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;      
-   }
-
-    
-</style> 

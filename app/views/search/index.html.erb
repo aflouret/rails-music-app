@@ -1,131 +1,71 @@
-<div id="title_search">Find your favourite <strong>artists</strong> and <strong>albums!</strong> </div>
+<%= stylesheet_link_tag "search_index" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div id="search_table">
-<%if params[:query_artist].nil? && params[:query_release].nil? %>
-    <span>
+<div class="container-search-index">
+    
+    <%if params[:query_artist].nil? && params[:query_release].nil? %>
+    
+    <div class="page-title">Find your favourite <b>artists</b> and <b>albums</b>. </div>
+
+    <div class="search-container">
+
         <%= form_with url: "/search", method: 'get' do |form| %>
-            
-            
-            <div class=search_artist>
+            <div>
             <%= form.label :query_artist,"Search for an artist:"%>
             </div>
 
-            <%= form.text_field :query_artist, :placeholder => "Nirvana" %>
-
-            <div><%= form.submit "Submit" %></div>
+            
+            <div class="search-input">
+                <%= form.text_field :query_artist, :placeholder => "e.g. Nirvana" %>
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         <% end %>
-    </span>
-    <span>
+
         <%= form_with url: "/search", method: 'get' do |form| %>
-            <div class=search_release><%= form.label :query_release, "Search for a release:" %></div>
+            <div><%= form.label :query_release, "Search for an album:" %></div>
 
-            <%= form.text_field :query_release, :placeholder => "Nevermind" %>
+            <div class="search-input">
+                <%= form.text_field :query_release, :placeholder => "e.g. Nevermind" %>
+                <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                </button>
+            </div>
 
-            <div><%= form.submit "Submit" %></div>
         <% end %>
-    </span>
-
-<% elsif params[:query_release].nil? && params[:query_artist] != nil %>
-    <% @results_artists[0,5].each do |result| %>
-        <div><%= link_to "%s" % [result.title], "/artists/%d" % result.id, :class=>"artist_link" %></div>
-    <% end %> 
-
-<% elsif params[:query_artist].nil? && params[:query_release] != nil %>
-    <% @results_releases.each do |result| %>
-        <div>
-            <%= link_to "%s" % [result.title], "/releases/%d" % result.id %>
-            <div><img src=<%=result.thumb%>></div>
+    
+    <% elsif params[:query_release].nil? && params[:query_artist] != nil %>
+        <div class="search-results">
+            <h1>Search results</h1>
+            <% @results_artists[0,5].each do |result| %>
+                <div class="result"><%= link_to "%s" % [result.title], "/artists/%d" % result.id, :class=>"artist_link" %></div>
+            <% end %>
         </div>
-    <% end %> 
+    
+    <% elsif params[:query_artist].nil? && params[:query_release] != nil %>
+        <div class="search-results">
+            <h1>Search results</h1>
+            <% @results_releases.each do |result| %>
+                <div class="result">
+                    <%= link_to "/releases/%d" % result.id do %>
+                            <div class="release-result">
+                                <div><img src=<%=result.thumb%>></div>
+                                <%artist_album = result.title.split('-')%>
+                                <div> 
+                                    <div class="album"><%=artist_album[1]%></div>
+                                    <div class="artist"><%=artist_album[0]%></div>
 
-<% end %>
+                                </div>
+                            </div>
+                    <%end%>
+                </div>
 
+            <% end %>
+        </div>
+    
+    <% end %>
+    
+    </div>
 </div>
 
-
-<style>
-
-    
-    #title_search{
-        background-color: transparent;
-        font-size:40px;
-        float:center;
-        color: black;
-        text-align:center;
-        font-family: 'Helvetica Neue';
-        margin-top: 80px;
-        letter-spacing: -1px; 
-        line-height: 1;
-    }
-
-    #search_table{
-        
-        line-height: 2.5;
-        font-size:30px;
-        font:'Alegreya';
-        float:center;
-        color: black;
-        text-align:center;  
-    }   
-
-    .search_artist{   
-
-        font-size:15px;
-        height: 30px;
-        color:black;
-        font-weight:bold;
-        border: 2px white;
-        text-align:center;
-        margin-top:60px;
-    } 
-   
-    .artist_link:hover {
-        background: white;
-    }
-
-    .search_release{
-
-        font-size:15px;
-        height: 30px;
-        color:black;
-        font-weight:bold;
-        border: 2px white;
-        text-align:center;
-        margin-top:40px;  
-
-    }
-
-    input[type=text] {
-        width:20%;
-        padding:12px 20px;
-        margin: 8px 0;
-        box-sizing:border-box;
-        border:2px solid black;
-        border-radius:4px;
-        background-color: white;
-        color:black;
-        background-image: "data:image/png;base64,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";
-        background-repeat:no-repeat;
-        padding-left:40px;
-    }
-    
-    input[type=button],input[type=submit],input[type=reset]{
-        height:25px;
-        background-color:black;
-        border:none;
-        color:#FFFF33;
-        padding;16px 32px;
-        text-decoration:none;
-        margin:4px 2px;
-        cursor:pointer;
-        text-align:center;
-        font-size:10px;
-        border-radius:12px;
-        border:2px solid black;
-        width:5%;
-        margin-top:10px;
-        margin-bottom:30px;
-   
-    }
-
-</style>

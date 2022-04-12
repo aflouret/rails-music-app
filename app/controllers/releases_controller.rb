@@ -11,8 +11,8 @@ class ReleasesController < ApplicationController
 
         @releases = releases.sort_by{|release| release.average_rating}.reverse!
         @covers = {}
-        mutex = Mutex.new
         threads = []
+        mutex= Mutex.new
         @releases.each do |release|
             threads << Thread.new do
                 cover = @discogs.get_master(release.id).images[0].resource_url
@@ -22,11 +22,6 @@ class ReleasesController < ApplicationController
             end
         end
         threads.map(&:join)
-
-        # @releases.each do |release|
-        #     cover = @discogs.get_master(release.id).images[0].resource_url
-        #     @covers[release.id] = cover
-        # end
     end
     
     def show

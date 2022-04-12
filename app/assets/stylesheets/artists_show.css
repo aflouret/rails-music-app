@@ -1,0 +1,37 @@
+h1.artist-releases {
+  margin: 20px;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+  margin: 10px 15%;
+}
+
+.release-card {
+  background-color: white;
+  border-radius: 3px;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.release-card-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.release-card img {
+  margin: 15px 0px;
+}
+
+.release-card .album {
+  font-weight: bold;
+  font-size: 20px;
+}

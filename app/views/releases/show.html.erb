@@ -1,143 +1,65 @@
-
-<div id="release_titles"><h1><%= @release_data.title%></h1></div>
-
-<div id="artist_name">
-<%= link_to @release_data.artists[0].name, "/artists/%d" % @release_data.artists[0].id %>
-</div>
-
-<%=image_tag(@release_data.images[0].resource_url, :class => "release_cover") %>
+<%= stylesheet_link_tag "releases_show" %>
 
 
-<ol>
-<% @release_data.tracklist.each do |track| %>
-   <li id="tracks"><span id=track_name> <%= track.title %>  </span>  <span id=track_duration> <%= track.duration %> </span></li>
-<% end %>
-</ol>
-<div id="review_table">
-<div id="add_review"><h2>Add a review:</h2></div>
-<% if user_signed_in? %>
-   <%= render 'reviews/form' %>
-<% else %>
-   <div id="log_in_message">Log in to write a review!
-<% end %>
+<div class="container">
+  <div class="album-container">
+  
+    <div class="left">
+      <div class="title"><h1><%= @release_data.title%></h1></div>
+      <div class="artist-name">
+      <%= link_to @release_data.artists[0].name, "/artists/%d" % @release_data.artists[0].id %>
+      </div>
 
-<div id="reviews_releases_title"><h2>Reviews</h2></div>
-<div id="reviews_releases"><%= render @release.reviews.select(&:persisted?) %></div>
-</div>
-
-
-
-
-<style>
-
-   .release_cover{
-      margin-top:10px;
-      margin-bottom:1em;
-      text-align:center;
-      float:center;
-      font-weight:bold;
-      line-height:50px;
-      width:150px;
-      vertical-align: middle;
-      border-style: none;
-          
-   }
-   #release_titles{
-      margin-top:70px;
-      background-color: transparent;
-      font-size:15px;
-      float:center;
-      color:black;
-      margin-bottom:1em;
-      text-align:left;
-
-   }
-    #artist_name{
-        background-color: transparent;
-        font-size:20px;
-        float:center;
-        color:black;
-        margin-bottom:1em;
-        
-        text-align:left;
-
-   }
-
-   #tracklist{
-        background-color: transparent;
-        font-size:18px;
-        float:center;
-        color:black;
-        margin-bottom:1em;
-        
-        text-align:left;
-
-   }
-   
-
-   #reviews_releases_title{
+      <div class="image-container"><%=image_tag(@release_data.images[0].resource_url, :class => "release_cover") %></div>
+    </div>
+  
+  
+    <div class="right">
       
-        font-size:20px;
-        float:center;
-        margin-top:70px;
-        margin-bottom:1em;
+      <table>
+        <caption>Tracklist</caption>
         
-   }
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <%unless @release_data.tracklist[0].duration == ''%>
+              <th>Duration</th>
+            <%end%>
+          </tr>
+        </thead>
+        <% track_number = 1 %>
+        <% @release_data.tracklist.each do |track| %>
+          <tr>
+            <td><%=track_number%></td>
+            <td><%= track.title %></td>
+            <%unless @release_data.tracklist[0].duration == ''%>
+            <td><%= track.duration %></td>
+            <%end%>
+          </tr>
+          <% track_number += 1 %>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-   #reviews_releases{
-      font-size:16px;
-      float:center;
-      margin-top:10px;
-      margin-bottom:1em;
-   
-   }
+  <div class="review-form-container">
+    <h2>Add a review</h2>
+    <% if user_signed_in? %>
+      <%= render 'reviews/form' %>
+    <% else %>
+      <div class="log_in_message">Log in to write a review!</div>
+    <% end %>
+  </div>
 
-   #tracks{
-      margin-bottom:10px;
-      padding:50
-   }
-   #track_name{
-      background-color: transparent;
-      font-size:15px;
-      font-family: 'Source Sans Pro', sans-serif;}
-      float:center;
-      color: black;
-      margin-bottom:10px; 
-      text-align:left;
-   }
+  <div class="reviews-container">
+    <%if @release.reviews.length > 1%>
+    <h2>Reviews</h2>
+    <%= render @release.reviews.select(&:persisted?) %>
+    <%end%>
+  </div>
+</div>
 
-   #track_duration{
-      background-color: transparent;
-      font-size:20px;
-      float:center;
-      color: black;
-      margin-bottom:10px;
-      text-align:left;
-      display: inline;
-   
-    }
-   #review_table{
-      background-color: transparent;
-      text-align:left;
-      overflow:hidden;
-      margin:0;
-      padding:0;
-      width:100%;
-      color:black;
-      margin-bottom:1em;
-   }
-   #add_review{
-      margin-top:70px;
-      font-size:20px;
-      float:center;
-      background-color: transparent;
-      margin-bottom:10px;
-   }
 
-   #log_in_message{
-      margin-top:20px;
-      font-size:15px;
-      font-weight:bold;
-   }
 
-</style>
+
