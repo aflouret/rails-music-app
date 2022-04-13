@@ -114,11 +114,11 @@ th {
 
 .review .title {
   font-weight: bold;
-  width: min(700px, 90%);
+  width: calc(min(700px, 90%));
 }
 
 .review .body {
-  width: min(700px, 90%);
+  width: calc(min(700px, 90%));
 }
 
 .review .edit-delete {
