@@ -1,5 +1,10 @@
 # MusicOnRails
 
+### Live Preview
+https://calm-reef-14604.herokuapp.com/
+
+### Setup Instructions
+
 1. Migrate the database
 
 ```
