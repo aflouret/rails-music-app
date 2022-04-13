@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_11_25_063425) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "releases", force: :cascade do |t|
     t.string "title"
     t.string "artist"
@@ -24,10 +27,10 @@ ActiveRecord::Schema.define(version: 2021_11_25_063425) do
     t.integer "rating"
     t.string "title"
     t.text "body"
-    t.integer "release_id", null: false
+    t.bigint "release_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["release_id"], name: "index_reviews_on_release_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
